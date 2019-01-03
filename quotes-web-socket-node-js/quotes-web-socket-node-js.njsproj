@@ -36,9 +36,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="server.js" />
-    <Compile Include="Services\quoteService.js">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Services\quotesService.js">
       <SubType>Code</SubType>
     </Compile>

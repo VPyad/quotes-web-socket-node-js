@@ -1,11 +1,16 @@
 'use strict';
-var http = require('http');
+var express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    app = express();
 var port = process.env.PORT || 1337;
 
 var quoteService = require('./Services/quotesService');
 
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    //res.write(Object.keys(quoteService.quotes).length);
-    res.end('Hello World\n');
-}).listen(port);
+app.use('*/images', express.static(path.join(__dirname, 'Assets/Img/Quotes')));
+
+app.get('/', function (req, res) {
+    res.end('Hello world');
+});
+
+http.createServer(app).listen(port);
