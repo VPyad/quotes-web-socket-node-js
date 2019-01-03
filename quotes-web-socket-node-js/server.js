@@ -13,4 +13,16 @@ app.get('/', function (req, res) {
     res.end('Hello world');
 });
 
+app.use('/quote', function (req, res, next) {
+    let payload = quoteService.getQuote();
+    res.status(200);
+    res.json(payload);
+});
+
+app.use(function (req, res, next) {
+    var payload = { message: "Not found" };
+    res.status(404);
+    res.json(payload);
+});
+
 http.createServer(app).listen(port);

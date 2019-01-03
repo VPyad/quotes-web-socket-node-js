@@ -1,5 +1,7 @@
 ﻿//'use strict'
 
+module.exports = { getQuote }
+
 var fs = require('fs');
 
 const IMAGE_PATH = './Assets/Img/Quotes';
@@ -15,9 +17,20 @@ function randIndexInRange(max) {
     return Math.floor(Math.random() * (max));
 }
 
-console.log(images[3]);
-//console.log(quotes[randIndexInRange(quotes.length)].text);
+function getQuote() {
+    let quoteObj = quotes[randIndexInRange(quotesLength)];
 
-function getImg() { }
+    let text = quoteObj.text;
+    let author = quoteObj.from;
+    let img = "/images/" + images[randIndexInRange(imagesLength)];
 
-function getQuote() { }
+    let result = {
+        author: author,
+        img: img,
+        quote: text
+    };
+
+    return result;
+}
+
+//getQuote();
