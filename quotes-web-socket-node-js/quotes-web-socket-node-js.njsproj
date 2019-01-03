@@ -29,9 +29,33 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\Quote.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="server.js" />
+    <Content Include="Assets\Img\Quotes\1.jpg" />
+    <Content Include="Assets\Img\Quotes\10.jpg" />
+    <Content Include="Assets\Img\Quotes\11.jpg" />
+    <Content Include="Assets\Img\Quotes\2.jpg" />
+    <Content Include="Assets\Img\Quotes\3.jpg" />
+    <Content Include="Assets\Img\Quotes\4.jpg" />
+    <Content Include="Assets\Img\Quotes\5.jpg" />
+    <Content Include="Assets\Img\Quotes\6.jpg" />
+    <Content Include="Assets\Img\Quotes\7.png" />
+    <Content Include="Assets\Img\Quotes\8.png" />
+    <Content Include="Assets\Img\Quotes\9.jpg" />
+    <Content Include="Data\quotes.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Img\" />
+    <Folder Include="Assets\Img\Quotes\" />
+    <Folder Include="Data\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
