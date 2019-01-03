@@ -3,6 +3,10 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     app = express();
+
+const server = http.createServer(app);
+var webSocketServer = require('websocket').server;
+
 var port = process.env.PORT || 1337;
 
 var quoteService = require('./Services/quotesService');
@@ -25,4 +29,28 @@ app.use(function (req, res, next) {
     res.json(payload);
 });
 
-http.createServer(app).listen(port);
+server.listen(port);
+
+var wss = new webSocketServer({
+    httpServer: server,
+    path: "/live"
+});
+
+wss.on('request', function (request) {
+    var connection = request.accept('', request.origin);
+
+    console.log('Connection created');
+
+    setInterval(function () {
+        connection.send(JSON.stringify(quoteService.getQuote()));
+    }, 3000);
+
+    connection.on('message', function (message) {
+        connection.send(JSON.stringify(quoteService.getQuote()));
+    });
+
+    connection.on('close', function (reasonCode, description) {
+        console.log('Peer ' + connection.remoteAddress + ' disconnected at : ', new Date());
+    });
+});
+
