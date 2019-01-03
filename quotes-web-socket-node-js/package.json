@@ -1,0 +1,9 @@
+{
+  "name": "quotes-web-socket-node-js",
+  "version": "0.0.0",
+  "description": "quotes-web-socket-node-js",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
