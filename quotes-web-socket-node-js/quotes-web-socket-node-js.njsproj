@@ -45,7 +45,9 @@
     <Content Include="Assets\Img\Quotes\1.jpg" />
     <Content Include="Assets\Img\Quotes\10.jpg" />
     <Content Include="Assets\Img\Quotes\11.jpg" />
-    <Content Include="Assets\Img\Quotes\2.jpg" />
+    <Content Include="Assets\Img\Quotes\2.jpg">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Assets\Img\Quotes\3.jpg" />
     <Content Include="Assets\Img\Quotes\4.jpg" />
     <Content Include="Assets\Img\Quotes\5.jpg" />
