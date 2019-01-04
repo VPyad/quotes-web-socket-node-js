@@ -1,6 +1,6 @@
 ﻿//'use strict'
 
-module.exports = { getQuote }
+module.exports = { getQuote, getQuotes }
 
 var fs = require('fs');
 
@@ -33,4 +33,20 @@ function getQuote() {
     return result;
 }
 
-//getQuote();
+function getQuotes(page) {
+    if (page == null || page <= 0) {
+        return null;
+    }
+
+    let limit = 10;
+    let offset = 0;
+
+    if (page > 1) {
+        offset += page * limit - limit;
+        limit += page * limit - limit;
+    }
+
+    let quotesObj = quotes.slice(offset, limit);
+
+    return quotesObj;
+}
