@@ -47,6 +47,21 @@ function getQuotes(page) {
     }
 
     let quotesObj = quotes.slice(offset, limit);
+    let quotesArr = new Array();
 
-    return quotesObj;
+    quotesObj.forEach(function (item) {
+        let text = item.text;
+        let author = item.from;
+        let img = "/images/" + images[randIndexInRange(imagesLength)];
+
+        let quote = {
+            author: author,
+            img: img,
+            quote: text
+        };
+
+        quotesArr.push(quote);
+    });
+
+    return quotesArr;
 }
