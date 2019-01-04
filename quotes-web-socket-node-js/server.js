@@ -11,6 +11,8 @@ var port = process.env.PORT || 1337;
 
 var quoteService = require('./Services/quotesService');
 
+let q = quoteService.getQuotes(0);
+
 app.use('*/images', express.static(path.join(__dirname, 'Assets/Img/Quotes')));
 
 app.get('/', function (req, res) {
@@ -21,6 +23,21 @@ app.use('/quote', function (req, res, next) {
     let payload = quoteService.getQuote();
     res.status(200);
     res.json(payload);
+});
+
+app.use('/quotes', function (req, res, next) {
+    let page = req.query.page;
+
+    if (page == null || page <= 0) {
+        let payload = { message: "page param is incorrect" };
+        res.status(400);
+        res.json(payload);
+    }
+    else {
+        let quotes = quoteService.getQuotes(page);
+        res.status(200);
+        res.json(quotes);
+    }
 });
 
 app.use(function (req, res, next) {
